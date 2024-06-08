@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import css from './MoviesPages.module.css';
+// import css from './MoviesPages.module.css';
 import Loader from '../../components/Loader/Loader';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import MovieList from '../../components/MovieList/MovieList';
@@ -14,7 +14,7 @@ const MoviesPages = () => {
 
   return (
     <main>
-      <h1 className={css.title}>Movies</h1>
+      
       <SearchBox value={query} onChange={setQuery} submit={handleSearchSubmit} />
       <MovieList query={query} />
 

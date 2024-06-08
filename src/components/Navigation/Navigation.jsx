@@ -9,11 +9,11 @@ const Navigation = () => {
   return (
     <header className={css.header}>
       <p className={css.logo}>
-        <span><GiFilmProjector /></span>
+        <span className={css.icon}><GiFilmProjector /></span>
         FIND THE MOVIE TO WATCH
       </p>
       <nav className={css.nav}>
-        <NavLink to="/" className={buildLinkClass}>Home Page</NavLink>
+        <NavLink to="/" className={buildLinkClass}>Home</NavLink>
         <NavLink to="/movies" className={buildLinkClass}>Movies</NavLink>
       </nav>
     </header>
