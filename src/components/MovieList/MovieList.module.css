@@ -1,0 +1,20 @@
+.header{
+    font-size: 50px;
+    text-align: center;
+    color: rgb(40, 18, 93);
+}
+
+
+
+.moviesList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:24px;
+}
+.poster{
+    width:200px;
+    border-radius: 8px;
+
+
+}

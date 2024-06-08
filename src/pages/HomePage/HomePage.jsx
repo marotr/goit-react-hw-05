@@ -1,8 +1,18 @@
 // import css from './HomePage.module.css'
 
+import MovieList from "../../components/MovieList/MovieList";
+
+
+
 const HomePage = () => {
+ 
   return (
-    <div>Home Page</div>
+    <div>
+   <MovieList query = ''/>
+ 
+  
+    </div>
+   
   )
 };
 
