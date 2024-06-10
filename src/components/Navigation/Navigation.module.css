@@ -19,7 +19,12 @@
     color: black;
     font-weight: 500;
     border: 1px rgb(40, 18, 93) solid;
-  
+    transition-duration: 0.4s;
+  }
+  .link:hover, link:focus{
+    
+    color:white;
+    background-color: rgb(129, 146, 230);
   }
   
   .active {

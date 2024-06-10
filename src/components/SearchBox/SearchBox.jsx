@@ -2,7 +2,6 @@ import { useId } from 'react';
 import css from './SearchBox.module.css';
 import { toast } from 'react-toastify';
 
-
 const SearchBox = ({ value, onChange, submit }) => {
   const searchBoxId = useId();
 
@@ -19,17 +18,16 @@ const SearchBox = ({ value, onChange, submit }) => {
     <div>
       <form onSubmit={handleSubmit}>
       
-    
-        <input
+          <input
 
-        
+
           className={css.input}
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           id={searchBoxId}
         />
-        <button type="submit">Search</button>
+        <button className = {css. button} type="submit">Search</button>
       </form>
     </div>
   );

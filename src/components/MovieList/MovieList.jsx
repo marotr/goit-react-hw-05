@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fetchMovies } from '../api/movies-api';
 import css from './MovieList.module.css';
 import Loader from '../Loader/Loader';
@@ -7,6 +8,7 @@ const MovieList = ({ query }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getMovies = async () => {
@@ -21,7 +23,7 @@ const MovieList = ({ query }) => {
     };
 
     getMovies();
-  }, [query]); // Add query to the dependency array
+  }, [query]);
 
   if (loading) {
     return <div>Loading... <Loader/></div>;
@@ -33,13 +35,17 @@ const MovieList = ({ query }) => {
 
   const getPosterUrl = (path) =>
     `https://image.tmdb.org/t/p/w500${path}`;
-  
+
+  const handleMovieClick = (movieId) => {
+    navigate(`/movies/${movieId}`);
+  };
+
   return (
     <div>
       <h1 className={css.header}>Trending Movies</h1>
       <ul className={css.moviesList}>
         {movies.map(movie => (
-          <li key={movie.id}>
+          <li key={movie.id} onClick={() => handleMovieClick(movie.id)}>
             {movie.poster_path && (
               <img className={css.poster} src={getPosterUrl(movie.poster_path)} alt={movie.title} />
             )}

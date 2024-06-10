@@ -1,0 +1,28 @@
+.input{
+    margin-right: 12px;
+    height: 32px;
+    width: 200px
+}
+
+.button{
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px rgb(40, 18, 93) solid;
+    color: white;
+    background-color: rgb(40, 18, 93);
+    font-size: 18px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  
+    
+
+}
+.button:hover, button:focus{
+    color:white;
+    background-color: rgb(129, 146, 230);
+ 
+
+}
+
