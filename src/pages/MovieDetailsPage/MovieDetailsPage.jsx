@@ -1,10 +1,12 @@
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { fetchMovieById } from '../../components/api/movies-api';
+import {  fetchMovieDetails } from '../../components/api/movies-api';
 import { useEffect, useState } from 'react';
 import Loader from '../../components/Loader/Loader';
+import css from './MovieDetailsPage.module.css'
+import { BackLink } from '../../components/BackLink/BackLink';
 
 const MovieDetailsPage = () => {
-  const { id } = useParams();
+  const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,7 +16,7 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const data = await fetchMovieById(id);
+        const data = await fetchMovieDetails(movieId);
         setMovie(data);
         setLoading(false);
       } catch (err) {
@@ -24,7 +26,7 @@ const MovieDetailsPage = () => {
     };
 
     getMovie();
-  }, [id]);
+  }, [movieId]);
 
   if (loading) {
     return <div>Loading... <Loader /></div>;
@@ -36,13 +38,28 @@ const MovieDetailsPage = () => {
 
   return (
     <main>
+      <BackLink className={css.backArrow} to = {backLinkHref}>Back to movies </BackLink>
+     
       {movie && (
         <>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-          <div>
-            <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
-            <p>{movie.popularity}</p>
+         <div className={css.wrapper}>
+         <img className={css.poster} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+          <div >
+            <h2 className={css.title}>{movie.title}</h2>
+            <p className={css.subtitle}>User score: <span className={css.subtitleInfo}>{movie.vote_average.toFixed(1)}</span> </p>
+            <p className={css.subtitle}>Overview: <span className={css.subtitleInfo}>{movie.overview}</span></p>
+            <p className={css.subtitle}>Genres: <span className={css.subtitleInfo}>
+  {movie.genres.map((genre) => genre.name).join(', ')}
+</span> </p>
+            
+
+
+          
+         </div>
+         </div>
+          
+
+            
             <ul>
               <li>
                 <Link to="cast" state={{ from: location }}>Cast</Link>
@@ -51,7 +68,7 @@ const MovieDetailsPage = () => {
                 <Link to="reviews" state={{ from: location }}>Reviews</Link>
               </li>
             </ul>
-          </div>
+          
         </>
       )}
     </main>

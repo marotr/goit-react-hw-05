@@ -3,7 +3,7 @@ import RiseLoader from "react-spinners/BarLoader";
 
 const Loader = () => {
   return (
-    <div className={css.loaderContainer}><RiseLoader color="#1e748e" speedMultiplier='1'/></div>
+    <div className={css.loaderContainer}><RiseLoader color="rgb(40, 18, 93) " speedMultiplier='1'/></div>
 
   )
 }

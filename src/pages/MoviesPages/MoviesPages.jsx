@@ -7,6 +7,7 @@ import MovieList from '../../components/MovieList/MovieList';
 
 const MoviesPages = () => {
   const [query, setQuery] = useState('');
+  
 
   const handleSearchSubmit = (searchQuery) => {
     setQuery(searchQuery);
@@ -16,7 +17,9 @@ const MoviesPages = () => {
     <main>
       
       <SearchBox value={query} onChange={setQuery} submit={handleSearchSubmit} />
-      <MovieList query={query} />
+      {query && (
+        <MovieList query={query} />
+      )}
 
       
       <Suspense fallback={<div><Loader /> Page is loading...</div>}>

@@ -33,6 +33,10 @@ const MovieList = ({ query }) => {
     return <div>Error: {error}</div>;
   }
 
+  if (!movies.length) {
+    return <div>No movies found.</div>;
+  }
+
   const getPosterUrl = (path) =>
     `https://image.tmdb.org/t/p/w500${path}`;
 
@@ -49,7 +53,7 @@ const MovieList = ({ query }) => {
             {movie.poster_path && (
               <img className={css.poster} src={getPosterUrl(movie.poster_path)} alt={movie.title} />
             )}
-            
+           
           </li>
         ))}
       </ul>

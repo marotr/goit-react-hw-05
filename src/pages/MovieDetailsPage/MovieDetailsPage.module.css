@@ -1,0 +1,28 @@
+.poster{
+    width:300px;
+    border-radius: 8px;
+}
+.backArrow{
+    display:inline-flex;
+    margin-bottom: 24px;
+}
+.wrapper{
+    display: flex;
+    gap: 24px;
+    justify-content: space-evenly;
+}
+.title{
+    color: rgb(40, 18, 93);
+    
+}
+.subtitle{
+    color: rgb(40, 18, 93);
+    font-weight: 600;
+}
+.subtitleInfo{
+    color:black;
+    font-weight: 400;
+}
+.genre{
+    list-style:none;
+}
