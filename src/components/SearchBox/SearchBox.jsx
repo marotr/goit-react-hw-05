@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import css from './SearchBox.module.css';
+
 import { toast } from 'react-toastify';
 
 
@@ -9,11 +10,22 @@ const SearchBox = ({ value, onChange, submit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value.trim()) {
-      toast.error('This field cannot be empty.');
+      toast.error('This field cannot be empty ', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+           });
       return;
     }
     submit(value);
+    
   };
+  
 
   return (
     <div>

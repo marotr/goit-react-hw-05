@@ -13,6 +13,7 @@ const apiClient = axios.create({
 const fetchFromAPI = async (endpoint, params = {}) => {
   try {
     const response = await apiClient.get(endpoint, { params });
+    console.log(`Response from ${endpoint}:`, response.data);  // Debugging line
     return response.data;
   } catch (err) {
     console.error(`Error ${endpoint}:`, err.response ? err.response.data : err.message);
@@ -27,11 +28,18 @@ export const fetchMovies = (query = '') => {
 };
 
 export const fetchMovieDetails = (movieId) => {
-  return fetchFromAPI(`/movie/${movieId}`, {
-    language: 'en-US',
-    append_to_response: 'videos,images,credits,reviews',
-  })}
+  return fetchFromAPI(`/movie/${movieId}`, { language: 'en-US' });
+};
 
+export const fetchMovieReviews = (movieId) => {
+  return fetchFromAPI(`/movie/${movieId}/reviews`, { language: 'en-US', page: 1 });
+};
+
+export const fetchMovieCredits = async (movieId) => {
+  const data = await fetchFromAPI(`/movie/${movieId}/credits`, { language: 'en-US' });
+  console.log("Credits Data:", data);  // Debugging line
+  return data.cast;  // Ensure that only the cast array is returned
+};
 
 
 //   import axios from 'axios';

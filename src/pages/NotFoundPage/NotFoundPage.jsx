@@ -1,7 +1,7 @@
 // import css from './MotFoundPage.module.css'
 const NotFoundPage = () => {
   return (
-    <div>NotFoundPage</div>
+    <div>NotFound Page</div>
   )
 }
 
