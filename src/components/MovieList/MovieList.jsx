@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
 import { fetchMovies } from '../api/movies-api';
 import css from './MovieList.module.css';
 import Loader from '../Loader/Loader';
@@ -8,7 +8,7 @@ const MovieList = ({ query }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const getMovies = async () => {
@@ -40,20 +40,20 @@ const MovieList = ({ query }) => {
   const getPosterUrl = (path) =>
     `https://image.tmdb.org/t/p/w500${path}`;
 
-  const handleMovieClick = (movieId) => {
-    navigate(`/movies/${movieId}`);
-  };
+
 
   return (
     <div>
       <h1 className={css.header}>Trending Movies</h1>
       <ul className={css.moviesList}>
         {movies.map(movie => (
-          <li key={movie.id} onClick={() => handleMovieClick(movie.id)}>
-            {movie.poster_path && (
-              <img className={css.poster} src={getPosterUrl(movie.poster_path)} alt={movie.title} />
-            )}
-           
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.poster_path && (
+                <img className={css.poster} src={getPosterUrl(movie.poster_path)} alt={movie.title} />
+              )}
+              <p>{movie.title}</p>
+            </Link>
           </li>
         ))}
       </ul>

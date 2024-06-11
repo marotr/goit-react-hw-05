@@ -1,11 +1,10 @@
 import { Suspense, useState } from 'react';
 import {  Outlet } from 'react-router-dom';
-// import css from './MoviesPages.module.css';
 import Loader from '../../components/Loader/Loader';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import MovieList from '../../components/MovieList/MovieList';
 
-const MoviesPages = () => {
+const MoviesPage = () => {
   const [query, setQuery] = useState('');
   
 
@@ -29,4 +28,4 @@ const MoviesPages = () => {
   );
 };
 
-export default MoviesPages;
+export default MoviesPage;
