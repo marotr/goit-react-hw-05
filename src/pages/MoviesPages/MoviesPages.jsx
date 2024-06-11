@@ -12,6 +12,7 @@ const MoviesPages = () => {
   const handleSearchSubmit = (searchQuery) => {
     setQuery(searchQuery);
   };
+  
 
   return (
     <main>
@@ -20,7 +21,6 @@ const MoviesPages = () => {
       {query && (
         <MovieList query={query} />
       )}
-
       
       <Suspense fallback={<div><Loader /> Page is loading...</div>}>
         <Outlet />

@@ -12,6 +12,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(null);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
+ 
 
   useEffect(() => {
     const getMovie = async () => {
@@ -35,6 +36,7 @@ const MovieDetailsPage = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  
 
   return (
     <main>
