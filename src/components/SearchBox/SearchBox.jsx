@@ -1,49 +1,30 @@
-import { useId } from 'react';
-import css from './SearchBox.module.css';
 
-import { toast } from 'react-toastify';
+ import css from './SearchBox.module.css';
+import  { useState } from 'react';
 
+const SearchBox = ({ value, submit }) => {
+  const [searchQuery, setSearchQuery] = useState(value);
 
-const SearchBox = ({ value, onChange, submit }) => {
-  const searchBoxId = useId();
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!value.trim()) {
-      toast.error('This field cannot be empty ', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-           });
-      return;
-    }
-    submit(value);
+    submit(searchQuery);
     
   };
-  
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-      
-          <input
-
-
-          className={css.input}
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          
-          id={searchBoxId}
-        />
-        <button className = {css. button} type="submit">Search</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input className={css.input}
+        type="text"
+        value={searchQuery}
+        onChange={handleChange}
+        placeholder="Search movies"
+      />
+      <button  className = {css. button} type="submit">Search</button>
+    </form>
   );
 };
 
